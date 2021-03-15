@@ -1,8 +1,7 @@
 import "./styles.css";
 import React, { Fragment, useState } from "react";
-import List from "./components/DictionaryListTwo";
+import List from "./components/DictionaryListChildren";
 import Description from "./components/Description";
-import { Hello, Hello2, HelloFour } from "./components/jsx";
 
 
 export default function App() {
@@ -21,17 +20,14 @@ a renderear dentro de cada li
   return (
     <div className="App">
       <Description />
-      <List
-        data={definitions}
-        render={({ key, description }) => (
-          <Fragment>
-            {key}:<strong> {description}</strong>
-          </Fragment>
-        )}
-      />
-      <Hello />
-      <Hello2 />
-      <HelloFour />
+      <List data={definitions}>
+      {({ key, description }) => (
+        <Fragment>
+          {key}: <strong>{description}</strong>
+        </Fragment>
+      )}
+    </List>
     </div>
   );
 }
+
